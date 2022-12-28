@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "2e290ea5-636b-4308-af8f-6e09a36dd3d2",
+		"name": "apidb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "saad",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "saad@user.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "c_password",
+							"value": "12345678",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/register",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "saad@user.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/login",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reset password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "saad@user.com",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/password/email",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"password",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "code verify",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": " code",
+							"value": "840648",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "123456789",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/password/code/check",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"password",
+						"code",
+						"check"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
