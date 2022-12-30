@@ -9,6 +9,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Hash;
 
 class RegisterController extends BaseController
 {
@@ -17,6 +18,9 @@ class RegisterController extends BaseController
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'image' => 'required',
+            'role' => 'required',
+            'designation' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
@@ -26,10 +30,19 @@ class RegisterController extends BaseController
         }
    
         $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        $input['password'] = Hash::make($request['password']);
+        if($request->file('image'))
+        {
+            $files = $request->file('image');
+		    $destinationPath = public_path('/uploads/logo/'); // upload path
+		    $fileName = date('YmdHis') . "." . $files->getClientOriginalExtension();
+		    $files->move($destinationPath, $fileName);
+            $input['image'] = $destinationPath.$fileName;
+        }
+
         $user = User::create($input);
         $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['name'] =  $user->name;
+        $success['user_setails'] =  $user;
    
         return $this->sendResponse($success, 'User register successfully.');
     }
@@ -43,6 +56,7 @@ class RegisterController extends BaseController
 
     public function login(Request $request)
     {
+        // return auth()->user();
         // print_r($request->all());die;
         if(!empty($request->all()))
         {
@@ -51,11 +65,12 @@ class RegisterController extends BaseController
                 'email' => 'required|exists:users',
                 'password' => 'required',
             ]);
-            
+            // return bcrypt($request->password);
             if ($validator->fails()) 
             {    
                 return $this->sendError('Unauthorised.', ['error'=> $validator->errors()]);
             }    
+            
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
                 $user = Auth::user(); 
                 $success['token'] =  $user->createToken('MyApp')-> accessToken; 
