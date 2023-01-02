@@ -14,8 +14,13 @@
 					"mode": "formdata",
 					"formdata": [
 						{
-							"key": "name",
+							"key": "first_name",
 							"value": "saad",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "awan",
 							"type": "default"
 						},
 						{
@@ -31,6 +36,21 @@
 						{
 							"key": "c_password",
 							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "designation",
+							"value": "php developer",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Saad/Desktop/asdas.jpg"
+						},
+						{
+							"key": "role",
+							"value": "receptionist",
 							"type": "default"
 						}
 					]
@@ -66,7 +86,7 @@
 						{
 							"key": "password",
 							"value": "12345678",
-							"type": "default"
+							"type": "text"
 						}
 					]
 				},
@@ -126,7 +146,7 @@
 					"formdata": [
 						{
 							"key": " code",
-							"value": "840648",
+							"value": "665456",
 							"type": "default"
 						},
 						{
@@ -148,6 +168,172 @@
 						"password",
 						"code",
 						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjI5MzhlZTMwNjMwZjE1YjAzMjgyMTc2ZTkxNzQ2ZDA4NDZkZWFlOTVkN2I5MzRkOWQ5MjBhZTA1YWI0ZmZmZTRiZDczMDIxNjEwYmE5NmEiLCJpYXQiOjE2NzI2NjcwNTYuODA2MTI2LCJuYmYiOjE2NzI2NjcwNTYuODA2MTI5LCJleHAiOjE3MDQyMDMwNTYuNzgwMjE4LCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.S6EyS6BwOzguEju2AbSzhbjzbGOoR4wMUkBWtOzRd53GpMfjI1sDu_x43gcythNfFg3474mLgaNO2XDPsf-Nfzj3vRqfaPLc0rnRQNeQwnRXuLeD2Gv52GFN62sah2MjGhB3nbPxtAKZDeeadLC8cD0CCSGeDnctiqNUKrPIFV3_ctiWmtkLiD5hdumlsls4-L1QCz8ZVyfPs70TIUTnIs3J-HMUkBTZpXq8BCGXXPLOkLhFUy4ZEyUuYKTs1r5Cq3vyXlwEUa9MvR6aYm8rvAPabOk9kQosBCLYJH3RdnIQ1qW2RA21vN1_AmYWZUvoZp3vPzbL0hwJungh4a7FgPI-_YAZmphG40deN_jnhuxdW5U_GkiVv08ydcNxbDUaPgF1sl0AF4RuaRNJvdXkBhBh9MZ1XAn6Knh3QhIeadQlNWiRmPkvw70gdu7fatfWvnF3bq7XgubgTVt-7x09_vBvtZDHrhCJDa73INCX9aVk8pXLq42nja4hMseJEEVb-Tdb4gm970hBR6Z83EgNN7IQYLtUhTPV2NRfQ80i3wYLLrpefzpFrdeX5HY2uK-1GsS9_anFmFAgErhDuZlRfJvEkq-8s6TGANewMCnKRZaHxZgbz_rsxZj4SsoeRprSvthJU9j30aKQwPL9KLhojemqnG-JuIYpwnB58RPUmhE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "current_password",
+							"value": "123456789",
+							"type": "default"
+						},
+						{
+							"key": "new_password",
+							"value": "12345678",
+							"type": "default"
+						},
+						{
+							"key": "confirm_password",
+							"value": "12345678",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/change-password",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWEzMGYzOWI4MTRjMzcyNmZmMGE3MDM1ZGZiNDQ2NjVkYzM0NjllYjgzMTUwMWZjOGUxOWZkYzhmNDAyYmU2MjNkMjc2NzkwZGJhOTM2OTUiLCJpYXQiOjE2NzI2NzE5NzcuNDg4Nzg0LCJuYmYiOjE2NzI2NzE5NzcuNDg4ODAxLCJleHAiOjE3MDQyMDc5NzcuNDY2NTAyLCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.ko2zsc3JBKAWH3NOs3y9nVFu3EzAo-hv5o0lLcwNyUOkAz_lZo122-4XNBFfaz1Z02hpBs_huIOIVe3NSNeauBYZkY45cC2vpLwTwwW8oSg7RR5PNCve1-AyQ_xJIO0CQNCurFyaN3pUgTGEjdTJgPlX2GvNpEsEcjmVkAl7AM8SRjZH9qddAJ9uOsYWB3NaaoeKpd91cmRGJhqOLdgYCqPtDogp072WP4eA5DGijryjJJEoxO0Ir4M71J3aZtZzKIhemJqGam8HMRAZxq_8vPkuvI-SbJiJECdG_QN0zm3uXyqnBaPRhzkq36UEOSGaEplRLQeAEykm3aCfMm38nEXyAR_Kqml8StdSw3n-rXAyp7kvdLtUYMhK9wGUY3NuK1IbUzOGQZi9Uh7sP23sv3QTIlRXc_Gax5-TEI5iAcEp8_BYWBnMzSUHywM0W-cOpxYFAbZ8wiFmi-7iksCw4uWLPiKcHQeTOLKSckeh0_QPI5otQAjkgP6tV-FZIasBUzTRW8a2oQ2lO1_1qxAq1OVlpySBMjF0OYdseOw1JP2ZzhAdBw-LbqsxT9YdeXUcGGYH4ca8v0P9A7fyZ29P3uij8JWpilGRyer1D68SXoDoefXgRDYaWlrEirSQ-ywT8x0sY5Ezp9iWnC0d-gPqLVQSwHNyCfCLE9-boBnaPhE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "saadi",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "awan",
+							"type": "default"
+						},
+						{
+							"key": "designation",
+							"value": "abc",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Saad/Desktop/download.jpg",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/profile-update",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"profile-update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Receptionist",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjI5MzhlZTMwNjMwZjE1YjAzMjgyMTc2ZTkxNzQ2ZDA4NDZkZWFlOTVkN2I5MzRkOWQ5MjBhZTA1YWI0ZmZmZTRiZDczMDIxNjEwYmE5NmEiLCJpYXQiOjE2NzI2NjcwNTYuODA2MTI2LCJuYmYiOjE2NzI2NjcwNTYuODA2MTI5LCJleHAiOjE3MDQyMDMwNTYuNzgwMjE4LCJzdWIiOiI5Iiwic2NvcGVzIjpbXX0.S6EyS6BwOzguEju2AbSzhbjzbGOoR4wMUkBWtOzRd53GpMfjI1sDu_x43gcythNfFg3474mLgaNO2XDPsf-Nfzj3vRqfaPLc0rnRQNeQwnRXuLeD2Gv52GFN62sah2MjGhB3nbPxtAKZDeeadLC8cD0CCSGeDnctiqNUKrPIFV3_ctiWmtkLiD5hdumlsls4-L1QCz8ZVyfPs70TIUTnIs3J-HMUkBTZpXq8BCGXXPLOkLhFUy4ZEyUuYKTs1r5Cq3vyXlwEUa9MvR6aYm8rvAPabOk9kQosBCLYJH3RdnIQ1qW2RA21vN1_AmYWZUvoZp3vPzbL0hwJungh4a7FgPI-_YAZmphG40deN_jnhuxdW5U_GkiVv08ydcNxbDUaPgF1sl0AF4RuaRNJvdXkBhBh9MZ1XAn6Knh3QhIeadQlNWiRmPkvw70gdu7fatfWvnF3bq7XgubgTVt-7x09_vBvtZDHrhCJDa73INCX9aVk8pXLq42nja4hMseJEEVb-Tdb4gm970hBR6Z83EgNN7IQYLtUhTPV2NRfQ80i3wYLLrpefzpFrdeX5HY2uK-1GsS9_anFmFAgErhDuZlRfJvEkq-8s6TGANewMCnKRZaHxZgbz_rsxZj4SsoeRprSvthJU9j30aKQwPL9KLhojemqnG-JuIYpwnB58RPUmhE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "jhon",
+							"type": "default"
+						},
+						{
+							"key": "last_name",
+							"value": "do",
+							"type": "default"
+						},
+						{
+							"key": "ssn",
+							"value": "4512",
+							"type": "default"
+						},
+						{
+							"key": "cross_link",
+							"value": "asd",
+							"type": "default"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Saad/Desktop/download.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://api.test/api/receptionist",
+					"protocol": "http",
+					"host": [
+						"api",
+						"test"
+					],
+					"path": [
+						"api",
+						"receptionist"
 					]
 				}
 			},
