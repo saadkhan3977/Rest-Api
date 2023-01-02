@@ -32,6 +32,11 @@ Route::middleware('auth:api')->group( function () {
     // Route::resource('products', ProductController::class);
     
     Route::get('logout', [homeController::class, 'logout']);
+    // Receptionist
+    Route::post('receptionist', [homeController::class, 'receptionist_store']);
+    
+    Route::post('change-password', [homeController::class, 'change_password']);
+    Route::post('profile-update', [homeController::class, 'profile']);
     Route::get('/product', function () {
         return 'welcome';
     });

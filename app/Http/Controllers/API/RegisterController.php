@@ -16,56 +16,44 @@ class RegisterController extends BaseController
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
             'email' => 'required|email|unique:users',
-            'image' => 'required',
-            'role' => 'required',
-            'designation' => 'required',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
    
         if($validator->fails()){
-            return $this->sendError('Validation Error.', $validator->errors());       
+            return response()->json(['success'=>false,'error'=>$validator->errors()->first()]);    
         }
    
-        $input = $request->all();
-        $input['password'] = Hash::make($request['password']);
-        if($request->file('image'))
-        {
-            $files = $request->file('image');
-		    $destinationPath = public_path('/uploads/logo/'); // upload path
-		    $fileName = date('YmdHis') . "." . $files->getClientOriginalExtension();
-		    $files->move($destinationPath, $fileName);
-            $input['image'] = $destinationPath.$fileName;
-        }
+        $input = $request->except(['_token','c_password'],$request->all());
+        if(isset($input)){
 
-        $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken;
-        $success['user_setails'] =  $user;
-   
+            $input['password'] = Hash::make($request['password']);
+            if($request->image)
+            {
+                $files = $request->file('image');
+                $destinationPath = public_path('/uploads/users/'); // upload path
+                $fileName = date('YmdHis') . "." . $files->getClientOriginalExtension();
+                $files->move($destinationPath, $fileName);
+                $input['image'] = asset('/uploads/users/'.$fileName);
+            }
+            
+            $user = User::create($input);
+            $success['token'] =  $user->createToken('MyApp')->accessToken;
+            $success['user_details'] =  $user;
+            
+        }
         return $this->sendResponse($success, 'User register successfully.');
     }
-    
-    /**
-     * Login api
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
 
     public function login(Request $request)
     {
-        // return auth()->user();
-        // print_r($request->all());die;
         if(!empty($request->all()))
         {
-
             $validator = Validator::make($request->all(), [
                 'email' => 'required|exists:users',
                 'password' => 'required',
             ]);
-            // return bcrypt($request->password);
             if ($validator->fails()) 
             {    
                 return $this->sendError('Unauthorised.', ['error'=> $validator->errors()]);

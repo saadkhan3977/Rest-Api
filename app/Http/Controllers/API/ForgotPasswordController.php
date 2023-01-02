@@ -37,5 +37,6 @@ class ForgotPasswordController extends BaseController
         Mail::to($request->email)->send(new SendCodeResetPassword($codeData->code));
 
         return response(['message' => 'We have emailed your password reset code!'], 200);
+        
     }
 }
